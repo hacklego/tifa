@@ -1,3 +1,4 @@
 from tif.harvester.harvester import Harvester
 
-Harvester.sync_feeds()
+if __name__ == '__main__':
+    Harvester.sync_feeds()

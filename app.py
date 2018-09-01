@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api
 
-from tif.rest.api import Rest
+from tif.rest.base_url import Rest
 from tif.rest.key import Key
 from tif.rest.value import Value
 from tif.rest.last import Last

@@ -1,12 +1,12 @@
 from tif.models.feed import Feed
-from tif.models.feed_sync import FeedSynchronizer
-from tif.models.feed_model import FeedModel
+from tif.models.ioc import IOC
+from tif.models.ioc_model import IOCModel
 
 import requests
 import re
 
 
-class ZeusIp(FeedSynchronizer):
+class ZeusIp(Feed):
     def __init__(self):
         self.name = 'Zeus'
         self.uri = 'https://zeustracker.abuse.ch/blocklist.php?download=ipblocklist'
@@ -16,15 +16,15 @@ class ZeusIp(FeedSynchronizer):
     def sync(self):
         r = requests.get(self.uri)
         info = r.text.split('\n')
-        db = FeedModel()
+        db = IOCModel()
         for ip in info:
             if re.match(self.regex, ip):
                 self.data['ip'] = ip
-                feed = Feed(**self.data)
+                feed = IOC(**self.data)
                 db.save(feed)
 
-                
-class ZeusUrl(FeedSynchronizer):
+   
+class ZeusUrl(Feed):
     def __init__(self):
         self.name = 'Zeus'
         self.uri = 'https://zeustracker.abuse.ch/blocklist.php?download=compromised'
@@ -34,9 +34,9 @@ class ZeusUrl(FeedSynchronizer):
     def sync(self):
         r = requests.get(self.uri)
         info = r.text.split('\n')
-        db = FeedModel()
+        db = IOCModel()
         for url in info:
             if re.match(self.regex, url):
                 self.data['domain'] = url
-                feed = Feed(**self.data)
+                feed = IOC(**self.data)
                 db.save(feed)
