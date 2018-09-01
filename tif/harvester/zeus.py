@@ -1,4 +1,4 @@
-from tif.models.feed import Feed
+from tif.harvester.feed import Feed
 from tif.models.ioc import IOC
 from tif.models.ioc_model import IOCModel
 
