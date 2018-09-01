@@ -30,6 +30,9 @@ class IOC():
 
     def __str__(self):
         to_str = self.to_dict()
-        to_str['date'] = self.date.strftime("%Y-%B-%d")
+        try:
+            to_str['date'] = self.date.strftime("%Y-%B-%d")
+        except:
+            to_str['date'] = self.date
 
         return str(to_str)
