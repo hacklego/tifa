@@ -21,14 +21,14 @@ class IOCModel:
     def find(self):
         iocs = list()
         for ioc in self.collection.find():
-            iocs.append(str(IOC(**ioc)))
+            iocs.append(IOC(**ioc))
 
         return iocs
 
     def find_by_key(self, key):
         iocs = list()
         for ioc in self.collection.find({key: {"$exists": True}}):
-            iocs.append(str(IOC(**ioc)))
+            iocs.append(IOC(**ioc))
 
         return iocs
 
@@ -36,7 +36,7 @@ class IOCModel:
         iocs = list()
         cursor = self.collection.find({key: {"$regex" : ".*{}.*".format(value)}})
         for ioc in cursor:
-            iocs.append(str(IOC(**ioc)))
+            iocs.append(IOC(**ioc))
 
         return iocs
 
@@ -46,6 +46,6 @@ class IOCModel:
         iocs = list()
         cursor = self.collection.find({"date": {"$gt" : time}})
         for ioc in cursor:
-            iocs.append(str(IOC(**ioc)))
+            iocs.append(IOC(**ioc))
 
         return iocs
