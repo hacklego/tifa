@@ -9,8 +9,6 @@ class FormatterFactory:
     
     @classmethod
     def format(cls, iocs, formatter):
-        print(iocs)
-        print(formatter)
         formatter = cls.formatters.get(formatter)(iocs)
         return formatter.format()
         
