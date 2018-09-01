@@ -7,6 +7,7 @@ from tif.rest.value import Value
 from tif.rest.last import Last
 
 app = Flask(__name__)
+
 api = Api(app)
 
 api.add_resource(Rest, '/rest')
