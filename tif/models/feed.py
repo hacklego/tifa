@@ -5,7 +5,7 @@ class Feed():
 
     def __init__(self, **kwargs):
         self.feed = kwargs.get('feed')
-        self.date = kwargs.get('date', datetime.now().strftime("%Y-%B-%d"))
+        self.date = kwargs.get('date', datetime.now())
         self.type = kwargs.get('type',"")
         self.name = kwargs.get('name',"")
         self.hash = kwargs.get('hash',"")
@@ -28,4 +28,6 @@ class Feed():
         return exists
 
     def __str__(self):
-        return str(self.to_dict())
+        to_str = self.to_dict()
+        to_str['date'] = self.date.strftime("%Y-%B-%d")
+        return str(to_str)
