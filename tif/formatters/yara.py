@@ -23,7 +23,7 @@ class FormatterYara(Formatter):
             yara_rule += '\n\tstrings:\n'
             yara_rule += '\n'.join(strings)
             yara_rule += '\n\tcondition:\n\t\t'
-            yara_rule += ' and '.join(conditions)
+            yara_rule += ' or '.join(conditions)
             yara_rule += '\n}'
             output.append(yara_rule)
 
