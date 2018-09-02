@@ -13,11 +13,12 @@ class IOC():
         self.domain = kwargs.get('domain',"")
         self.mail = kwargs.get('mail',"")
         self.artifact = kwargs.get('artifact',"")
+        self.id = kwargs.get('_id')
 
     def to_dict(self):
         to_dict = dict()
         for k, v in self.__dict__.items():
-            if v:
+            if v and k != 'id':
                 to_dict[k] = v
 
         return to_dict

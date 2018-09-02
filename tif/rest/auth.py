@@ -9,7 +9,6 @@ users = UserModel().find()
 def get_pw(username):
     for user in users:
         user = user.to_dict()
-        print(user)
         if username in user:
             return user.get(username)
 
