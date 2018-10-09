@@ -2,10 +2,14 @@ from pymongo import MongoClient
 from tif.models.ioc import IOC
 
 from datetime import datetime, timedelta
+from configparser import ConfigParser
 
 class IOCModel:
     def __init__(self):
-        self.client = MongoClient("mongodb://127.0.0.1:27017")
+        config_parser = ConfigParser()
+        config_parser.read('tifa.conf')
+        db = config_parser.get('tifa', 'db')
+        self.client = MongoClient(db)
         self.db = self.client.tif
         self.collection = self.db.iocs
 
