@@ -16,3 +16,7 @@ class UserModel:
             users.append(User(**user))
 
         return users
+
+    def save(self, name, passwd):
+        user = {"name": name, "passwd": passwd}
+        self.collection.save(user)
