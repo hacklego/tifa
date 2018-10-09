@@ -3,14 +3,22 @@ from tif.models.user import User
 
 from configparser import ConfigParser
 
+import os
+
 class UserModel:
     ''' '''
 
     def __init__(self):
         config_parser = ConfigParser()
         config_parser.read('tifa.conf')
-        db = config_parser.get('tifa', 'db')
-        self.client = MongoClient(db)
+        db = None
+        try:
+            db = config_parser.get('tifa', 'db')
+        except:
+            pass
+        self.client = MongoClient(os.environ['DB_PORT_27017_TCP_ADDR'], 27017)
+        if db:
+            self.client = MongoClient(db)
         self.db = self.client.tif
         self.collection = self.db.users
 
