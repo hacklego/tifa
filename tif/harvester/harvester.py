@@ -1,10 +1,20 @@
-from tif.harvester.zeus import ZeusIp, ZeusUrl
+from multiprocessing import Process
 
 class Harvester:
 
-    feeds = [ZeusIp(), ZeusUrl()]
+    def __init__(self, feeds):
+        self.feeds = feeds
     
-    @classmethod
-    def sync_feeds(cls):
-        for feed in cls.feeds:
-            feed.sync()
+    def sync(self, feed):
+        feed.sync()
+
+    def sync_feeds(self):
+        processes = list()
+        for feed in self.feeds:
+            processes.append(Process(target=self.sync, args=(feed,)))
+
+        for process in processes:
+            process.start()
+
+        for process in processes:
+            process.join()
