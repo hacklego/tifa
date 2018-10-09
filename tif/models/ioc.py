@@ -13,6 +13,11 @@ class IOC():
         self.domain = kwargs.get('domain',"")
         self.mail = kwargs.get('mail',"")
         self.artifact = kwargs.get('artifact',"")
+        self.info = kwargs.get('info', "")
+        self.threat = kwargs.get('threat', "")
+        self.asn = kwargs.get('asn', "")
+        self.country = kwargs.get('country', "")
+        self.isp = kwargs.get('isp', "")
         self.id = kwargs.get('_id')
 
     def to_dict(self):
