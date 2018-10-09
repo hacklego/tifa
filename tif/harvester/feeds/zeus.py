@@ -14,7 +14,7 @@ class ZeusIp(Feed):
         self.regex = r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" 
 
     def sync(self):
-        r = requests.get(self.uri)
+        r = requests.get(self.uri, timeout=60)
         info = r.text.split('\n')
         db = IOCModel()
         for ip in info:
@@ -32,7 +32,7 @@ class ZeusUrl(Feed):
         self.regex = r".+\/.+\/"
 
     def sync(self):
-        r = requests.get(self.uri)
+        r = requests.get(self.uri, timeout=60)
         info = r.text.split('\n')
         db = IOCModel()
         for url in info:

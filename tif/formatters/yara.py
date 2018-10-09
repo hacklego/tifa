@@ -5,7 +5,7 @@ from flask import make_response
 
 class FormatterYara(Formatter):
     def format(self):
-        meta_values = ["id", "feed", "date", "name", "type"]
+        meta_values = ["id", "feed", "date", "name", "type", "info", "threat"]
         output = list()
         for ioc in self.iocs:
             yara_rule = 'rule {}'.format(str(ioc.id) + ' {\n')
