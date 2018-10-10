@@ -1,4 +1,5 @@
 from tif.models.ioc_model import IOCModel
+from tif.models.ioc import IOC
 from tif.rest.auth import *
 from tif.formatters.formatter_factory import FormatterFactory
 
