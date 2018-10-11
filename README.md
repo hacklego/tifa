@@ -1,8 +1,7 @@
 TIFA (Threat Intelligence Framework)
 ==========
 
-[![MIT License]((https://img.shields.io/aur/license/yaourt.svg?style=for-the-badge)][license]
-![GitHub contributors](https://img.shields.io/github/contributors/cdnjs/cdnjs.svg?style=for-the-badge)
+[![license](https://img.shields.io/aur/license/yaourt.svg?style=for-the-badge)][license]
 
 [license]: https://github.com/hacklego/tifa/blob/master/LICENSE
 
