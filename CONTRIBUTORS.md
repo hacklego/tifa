@@ -1,0 +1,3 @@
+CONTRIBUTORS
+==========
+* Iago Gómez Salgado
